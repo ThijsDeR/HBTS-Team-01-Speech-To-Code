@@ -9,7 +9,7 @@ import os
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
-# import functions.whileFunction as whileFunction
+import functions.whileFunction as whileFunction
 import functions.datatypes as dataFunction
 
 # Initialize the recognizer
@@ -62,6 +62,10 @@ while(1):
         if "make" in MyText:
           if "print" in MyText:
             voiceFunction = printFunction.printFunctionality()
+            print(voiceFunction.getFunctionalityString())
+            SpeakText(voiceFunction.getFunctionalityString())
+          if "data" in MyText:
+            voiceFunction = dataFunction.dataFunctionality()
             print(voiceFunction.getFunctionalityString())
             SpeakText(voiceFunction.getFunctionalityString())
         elif "execute" in MyText:
