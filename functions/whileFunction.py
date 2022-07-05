@@ -19,9 +19,10 @@ class whileFunctionality(voiceFunctions):
             if "while" in words:
                 self.toBePrintedText = words.replace("while", "")
                 f.close()
-
+                print(f"please choose the operater now")
+#WAAROM KRIJG IK DIT NIET AAAAAA IK WIL DIT KUNNEN KIEZEN
             self.currentStep = 2
-        if (self.currentstep == 2):
+        if (self.currentStep == 2):
             print('please give the operator')
             if "greater than" in words:
                 operator = words.replace(">", "")
@@ -40,10 +41,10 @@ class whileFunctionality(voiceFunctions):
 
             # hier moet een call functie komen
             self.currentStep = 3
-        if (self.currentstep == 3):    
+        if (self.currentStep == 3):    
             print("Please give the second variable:")
             var2 = words.replace("", "")
-            f.write(f"\n while('{var1} {operator} {var2} ') \n")
+            f.write(f"\n while('{operator} {var2}') \n")
         f.close()
 
     def getFunctionalityString(self):
