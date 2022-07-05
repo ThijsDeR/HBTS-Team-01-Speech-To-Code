@@ -45,14 +45,21 @@ class forFunctionality(voiceFunctions):
             addorless = words.replace("--")
         elif "bracket" in words:
             bracket = words.replace("{}")
+            f.close()
+            print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+            self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+            self.currentStep = 3
             
         print("printing")
                 # hier moet een call functie komen
-        self.currentStep = 3
+     
         if (self.currentstep == 3): 
           print("printing")   
         f.write(f"\n  'for( let {forloopindex} {equals} {forloopnumber}; {forloopindex} {operator} array.length; {forloopindex}{addorless}) {bracket} '; \n")
         f.close()
+        print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+        self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+        
     def getFunctionalityString(self):
         return "Step one is say 'while, then you will get a option for a variable and after that you can choose the operator and second variable"
 #     for (let index = 0; index < array.length; index++) {
