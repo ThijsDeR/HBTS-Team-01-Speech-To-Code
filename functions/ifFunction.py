@@ -16,8 +16,8 @@ def ifFunction(words, file):
         elif "greater than" in words:
             operator = words.replace(">")
         elif "greater than or equals to" in words:
-            operator = words.replace("=>")
-            
+            operator = words.replace(">=")
+
         print("Please give the second variable:")
         variable2 = words.replace("")
         f.write(f"\n if('{variable1} + {operator} + {variable2}') \n") 
