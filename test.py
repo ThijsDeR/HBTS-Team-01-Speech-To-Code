@@ -54,6 +54,7 @@ while(1):
       # Using google to recognize audio
       MyText = r.recognize_google(audio2)
       MyText = MyText.lower()
+      print(f"heard: {MyText}")
       if voiceFunction != None:
         done = voiceFunction.advance(MyText, "text.py")
         if done:
@@ -72,14 +73,26 @@ while(1):
         elif "execute" in MyText:
           importlib.reload(text)
           text.voiceCommand()
+        elif "reset" in MyText:
+          os.remove('text.py')
+          f = open("text.py", "w")
+          f.write("def voiceCommand():\n print('') \n")
+          f.close()
+          print("Resetted all code")
+          SpeakText("Resetted all code")
+        elif "help" in MyText:
+          print("Available functions: \n - make (print)\n - execute\n - reset\n - help")
+          SpeakText("Available functions: \n - make (print)\n - execute\n - reset\n - help")
         else:
-          SpeakText("Nothing found, try again")
-        
-
-      
-      
+          print(f"Nothing found for {MyText}")
+          SpeakText(f"Nothing found for {MyText}")
+  
   except sr.RequestError as e:
-    print("Could not request results; {0}".format(e))
+    print(f"Nothing found, try help")
+    SpeakText(f"Nothing found, try help")
+    # print("Could not request results; {0}".format(e))
     
   except sr.UnknownValueError:
-    print("unknown error occured")
+    print(f"Nothing found, try help")
+    SpeakText(f"Nothing found, try help")
+    # print("unknown error occured")
