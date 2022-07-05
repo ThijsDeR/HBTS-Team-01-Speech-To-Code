@@ -9,8 +9,8 @@ import os
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
-import functions.whileFunction as whileFunction
-
+# import functions.whileFunction as whileFunction
+import functions.datatypes as dataFunction
 
 # Initialize the recognizer
 r = sr.Recognizer()
@@ -56,7 +56,8 @@ while(1):
       
       printFunction.printFunction(MyText, "text.py")      
       ifFunction.ifFunction(MyText, "text.py")
-      whileFunction.whileFunction(MyText, "text.py")    
+      # whileFunction.voiceFunction(MyText, "text.py")
+      dataFunction.dataFunction(MyText, "text.py")    
       
       if "execute" in MyText:
         importlib.reload(text)
