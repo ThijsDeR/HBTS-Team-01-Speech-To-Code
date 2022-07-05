@@ -1,3 +1,2 @@
 def voiceCommand():
-
-  array = [jeff test] 
+    print('')
