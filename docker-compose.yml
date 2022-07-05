@@ -6,3 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    command: bash -c 
+      "python ./test.py
+      && tail -f /dev/null"
+
+# tail -f /dev/null
