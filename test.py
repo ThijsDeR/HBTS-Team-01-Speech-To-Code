@@ -9,15 +9,17 @@ import os
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
-
+import functions.whileFunction as whileFunction
+import functions.datatypes as dataFunction
 
 # Initialize the recognizer
 r = sr.Recognizer()
 os.remove('text.py')
 f = open("text.py", "w")
-f.write("def voiceCommand():\n")
+f.write("def voiceCommand():\n print('') \n")
 f.close()
 print('ready')
+voiceFunction = None
 
 # Function to convert text to
 # speech
@@ -44,7 +46,7 @@ while(1):
       # wait for a second to let the recognizer
       # adjust the energy threshold based on
       # the surrounding noise level
-      r.adjust_for_ambient_noise(source2, duration=0.8)
+      r.adjust_for_ambient_noise(source2, duration=0.2)
       
       #listens for the user's input
       audio2 = r.listen(source2)
@@ -52,17 +54,29 @@ while(1):
       # Using google to recognize audio
       MyText = r.recognize_google(audio2)
       MyText = MyText.lower()
-      
-      printFunction.printFunction(MyText, "text.py")      
-      ifFunction.ifFunction(MyText, "text.py")      
-      
-      if "execute" in MyText:
-        importlib.reload(text)
-        text.voiceCommand()
-      f.close()
+      if voiceFunction != None:
+        done = voiceFunction.advance(MyText, "text.py")
+        if done:
+          voiceFunction = None
+      else:
+        if "make" in MyText:
+          if "print" in MyText:
+            voiceFunction = printFunction.printFunctionality()
+            print(voiceFunction.getFunctionalityString())
+            SpeakText(voiceFunction.getFunctionalityString())
+        elif "while" in MyText:
+            voiceFunction = whileFunction.whileFunctionality()
+            print(voiceFunction.getFunctionalityString())
+            SpeakText(voiceFunction.getFunctionalityString())
 
-      print("Did you say "+MyText)
-      SpeakText(MyText)
+        elif "execute" in MyText:
+          importlib.reload(text)
+          text.voiceCommand()
+        else:
+          SpeakText("Nothing found, try again")
+        
+
+      
       
   except sr.RequestError as e:
     print("Could not request results; {0}".format(e))
