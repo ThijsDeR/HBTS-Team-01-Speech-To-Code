@@ -16,9 +16,10 @@ COPY . /app
 
 # Update OS and install common dev tools
 RUN apt-get update
-RUN apt-get install -y wget vim git zip unzip zlib1g-dev libzip-dev libpng-dev
-RUN apt-get -y install python3-pyaudio
+RUN apt-get install pulseaudio wget vim git zip unzip zlib1g-dev libzip-dev ffmpeg libpng-dev libasound-dev libportaudio2 libportaudiocpp0 portaudio19-dev python3-pyaudio -y
+RUN pip install pyaudio
 
+RUN pulseaudio -nC
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
