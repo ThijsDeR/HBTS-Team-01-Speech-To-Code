@@ -8,6 +8,7 @@ import pyttsx3
 import os
 import text
 import functions.print as printFunction
+import functions.ifFunction as ifFunction
 
 
 # Initialize the recognizer
@@ -53,6 +54,7 @@ while(1):
       MyText = MyText.lower()
       
       printFunction.printFunction(MyText, "text.py")      
+      ifFunction.ifFunction(MyText, "text.py")      
       
       if "execute" in MyText:
         importlib.reload(text)
