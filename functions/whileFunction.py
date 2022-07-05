@@ -1,29 +1,29 @@
-from traceback import print_tb
-
-
-def printFunction(words, file):
+def whileFunction(words, file):
+    if (self.Currentstep == 1)
     f = open(file, "a")
     if "while" in words:
         print("Pleade give the first variable:")
         var1 = words.replace("while", "")
 
-        print('please give operator')
-        if "bigger" in words:
+        # hier moet een call functie komen
+
+        print('please give the operator')
+        if "greater than" in words:
             operator = words.replace(">", "")
-        elif "bigger or equal" in words:
+        elif "greater than or equal to" in words:
             operator = words.replace(">=", "")
-        elif "smaller" in words:
+        elif "less than" in words:
             operator = words.replace("<", "")
-        elif "smaller or equal" in words:
+        elif "less than or equal to" in words:
             operator = words.replace("<=", "")
         elif "equal" in words:
             operator = words.replace("==", "")
         elif "not equal" in words:
             operator = words.replace("!=", "")
 
+            # hier moet een call functie komen
 
         print("Please give the second variable:")
-        var2 = words.replace("")
-
-        f.write(f"\n  while('{var1} {operator} {var2} ') \n")
+        var2 = words.replace("", "")
+        f.write(f"\n while('{var1} {operator} {var2} ') \n")
     f.close()
