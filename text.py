@@ -1,1 +1,2 @@
-def voiceCommand():
+def voiceCommand(): 
+    print('\n')
