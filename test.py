@@ -9,7 +9,7 @@ import os
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
-# import functions.whileFunction as whileFunction
+import functions.whileFunction as whileFunction
 import functions.datatypes as dataFunction
 
 # Initialize the recognizer
@@ -46,7 +46,7 @@ while(1):
       # wait for a second to let the recognizer
       # adjust the energy threshold based on
       # the surrounding noise level
-      r.adjust_for_ambient_noise(source2, duration=0.8)
+      r.adjust_for_ambient_noise(source2, duration=0.2)
       
       #listens for the user's input
       audio2 = r.listen(source2)
@@ -64,6 +64,11 @@ while(1):
             voiceFunction = printFunction.printFunctionality()
             print(voiceFunction.getFunctionalityString())
             SpeakText(voiceFunction.getFunctionalityString())
+        elif "while" in MyText:
+            voiceFunction = whileFunction.whileFunctionality()
+            print(voiceFunction.getFunctionalityString())
+            SpeakText(voiceFunction.getFunctionalityString())
+
         elif "execute" in MyText:
           importlib.reload(text)
           text.voiceCommand()

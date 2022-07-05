@@ -1,8 +1,9 @@
 def printFunction(words, file):
     f = open(file, "a")
     if "for" in words:
-        print("please give for-operator")
+        print("please give first operator")
         var1 = words.replace("for", "")
+        print("please give operator")
         if "index" in words:
               forloopindex = words.replace("i")
         elif "equals" in words:
@@ -23,9 +24,11 @@ def printFunction(words, file):
             addorless = words.replace("++")
         elif "minus" in words:
             addorless = words.replace("--")
+        elif "bracket" in words:
+            bracket =words.replace("{}")
             
         print("printing")
-        f.write(f"\n  '{var1}( let {forloopindex} {equals} {forloopnumber}; {forloopindex} {operator} array.length; {forloopindex}{addorless}) '; \n")
+        f.write(f"\n  '{var1}( let {forloopindex} {equals} {forloopnumber}; {forloopindex} {operator} array.length; {forloopindex}{addorless}) {bracket} '; \n")
     f.close()
 #     for (let index = 0; index < array.length; index++) {
 #     const element = array[index];
