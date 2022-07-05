@@ -1,3 +1,9 @@
+from voiceFunction import voiceFunctions
+
+class
+
+
+
 def whileFunction(words, file):
     if (self.Currentstep == 1)
     f = open(file, "a")
