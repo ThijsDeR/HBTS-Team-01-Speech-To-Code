@@ -7,6 +7,7 @@ import speech_recognition as sr
 import pyttsx3
 import os
 import text
+import functions.print as printFunction
 
 
 # Initialize the recognizer
@@ -31,6 +32,7 @@ def SpeakText(command):
 # speak
 
 while(1):
+
   
   # Exception handling to handle
   # exceptions at the runtime
@@ -50,11 +52,8 @@ while(1):
       MyText = r.recognize_google(audio2)
       MyText = MyText.lower()
       
-      f = open("text.py", "a")
-      if "print" in MyText:
-        printedText = MyText.replace("print ", "")
-        print("printing")
-        f.write(f"\n  print('{printedText}') \n")
+      printFunction.printFunction(MyText, "text.py")      
+      
       if "execute" in MyText:
         importlib.reload(text)
         text.voiceCommand()

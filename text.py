@@ -1,2 +1,5 @@
-def voiceCommand(): 
-    print('\n')
+def voiceCommand():
+
+  print('test') 
+
+  print('test homo') 
