@@ -2,11 +2,20 @@
 # speech to text and text to speech
 
 
+import importlib
 import speech_recognition as sr
 import pyttsx3
+import os
+import text
+
 
 # Initialize the recognizer
 r = sr.Recognizer()
+os.remove('text.py')
+f = open("text.py", "w")
+f.write("def voiceCommand():\n")
+f.close()
+print('ready')
 
 # Function to convert text to
 # speech
@@ -29,11 +38,10 @@ while(1):
     
     # use the microphone as source for input.
     with sr.Microphone() as source2:
-      print('test')
       # wait for a second to let the recognizer
       # adjust the energy threshold based on
       # the surrounding noise level
-      r.adjust_for_ambient_noise(source2, duration=0.2)
+      r.adjust_for_ambient_noise(source2, duration=0.1)
       
       #listens for the user's input
       audio2 = r.listen(source2)
@@ -41,6 +49,16 @@ while(1):
       # Using google to recognize audio
       MyText = r.recognize_google(audio2)
       MyText = MyText.lower()
+      
+      f = open("text.py", "a")
+      if "print" in MyText:
+        printedText = MyText.replace("print ", "")
+        print("printing")
+        f.write(f"\n  print('{printedText}') \n")
+      if "execute" in MyText:
+        importlib.reload(text)
+        text.voiceCommand()
+      f.close()
 
       print("Did you say "+MyText)
       SpeakText(MyText)
