@@ -6,19 +6,19 @@ class whileFunctionality(voiceFunctions):
         super().__init__(3)
 
     def advance(self, words, file):
-        if "exit while" in words:
+        if "exit" in words:
             return True
 
-        if "explain while" in words:
+        if "explain" in words:
             print(self.getFunctionalityString())
             self.SpeakText(self.getFunctionalityString())
             return False
 
         if self.currentStep == 1:       
             f = open(file, "a")
-        if "while" in words:
-            self.toBePrintedText = words.replace("while", "")
-            f.close()
+            if "while" in words:
+                self.toBePrintedText = words.replace("while", "")
+                f.close()
 
             self.currentStep = 2
         if (self.currentstep == 2):
@@ -36,11 +36,11 @@ class whileFunctionality(voiceFunctions):
             elif "not equal" in words:
                 operator = words.replace("!=", "")
             
-            f.write(f"\n while('{var1} {operator} {var2} ') \n")
+            #f.write(f"\n while('{var1} {operator} {var2} ') \n")
 
             # hier moet een call functie komen
             self.currentStep = 3
-        if (slef.currentstep == 3):    
+        if (self.currentstep == 3):    
             print("Please give the second variable:")
             var2 = words.replace("", "")
             f.write(f"\n while('{var1} {operator} {var2} ') \n")

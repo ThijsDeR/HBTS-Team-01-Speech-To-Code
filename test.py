@@ -9,7 +9,7 @@ import os
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
-# import functions.whileFunction as whileFunction
+import functions.whileFunction as whileFunction
 import functions.datatypes as dataFunction
 
 # Initialize the recognizer
@@ -64,6 +64,11 @@ while(1):
             voiceFunction = printFunction.printFunctionality()
             print(voiceFunction.getFunctionalityString())
             SpeakText(voiceFunction.getFunctionalityString())
+        elif "while" in MyText:
+            voiceFunction = whileFunction.whileFunctionality()
+            print(voiceFunction.getFunctionalityString())
+            SpeakText(voiceFunction.getFunctionalityString())
+
         elif "execute" in MyText:
           importlib.reload(text)
           text.voiceCommand()
