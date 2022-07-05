@@ -1,2 +1,3 @@
 def voiceCommand():
-    print('')
+ print('') 
+print('hello world\n hello world') 
