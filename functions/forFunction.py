@@ -28,28 +28,17 @@ class forFunctionality(voiceFunctions):
               function = words.replace(any)
         elif "range" in words:
             splitNumber = words.split(" ")[words.split(" ").index("range")+1] 
-        
-        elif "range two" in words:
-             function = words.replace("range(2)")
-        elif "range three" in words:
-             function = words.replace("range(3)")
-        elif "range four" in words:
-             function = words.replace("range(4)")
-        elif "range five" in words:
-             function = words.replace("range(5)")
-        elif "range six" in words:
-             function = words.replace("range(6)")
-             f.close()
-             print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
-             self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
-             self.currentStep = 3
+        f.close()
+        print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+        self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
+        self.currentStep = 3
             
         print("printing")
                 # hier moet een call functie komen
      
         if (self.currentstep == 3): 
           print("printing")   
-        f.write(f"\n  'for x in {splitNumber}: print('x')'; \n")
+        f.write(f"\n  'for x in {splitNumber} or {function}: print('x')'; \n")
         f.close()
         print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
         self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
