@@ -26,8 +26,9 @@ class forFunctionality(voiceFunctions):
 
         if any in words:
               function = words.replace(any)
-        elif "range one" in words:
-             function = words.replace("range(1)")
+        elif "range" in words:
+            splitNumber = words.split(" ")[words.split(" ").index("range")+1] 
+        
         elif "range two" in words:
              function = words.replace("range(2)")
         elif "range three" in words:
@@ -48,7 +49,7 @@ class forFunctionality(voiceFunctions):
      
         if (self.currentstep == 3): 
           print("printing")   
-        f.write(f"\n  'for x in {function}: print('x')'; \n")
+        f.write(f"\n  'for x in {splitNumber}: print('x')'; \n")
         f.close()
         print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
         self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
