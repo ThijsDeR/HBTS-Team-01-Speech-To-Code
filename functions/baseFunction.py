@@ -27,6 +27,8 @@ class BaseFunction(voiceFunctions):
                         self.inlineVoiceFunction = dataFunctionality(self.spacing + 2)
                     elif "while" in words:
                         self.inlineVoiceFunction = whileFunctionality(self.spacing + 2)
+                    elif "for" in words:
+                        self.inlineVoiceFunction = whileFunctionality(self.spacing + 2)
                 elif "execute" in words:
                     importlib.reload(text)
                     text.voiceCommand()
