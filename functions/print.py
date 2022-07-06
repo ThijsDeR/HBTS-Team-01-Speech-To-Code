@@ -19,32 +19,30 @@ class printFunctionality(voiceFunctions):
             if "print" in words:
                 words = words.replace("new line", "\\n")
                 if self.addSetting:
-                    print("adding")
                     self.toBePrintedText += words.replace("print ", "")
                     print(self.toBePrintedText)
                 else:
-                    print("not adding")
                     self.toBePrintedText = words.replace("print ", "")
                     print(self.toBePrintedText)
             f.close()
-            print(f"are you happy with the text: \n {self.toBePrintedText} (say add, restart or yes)")
-            self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say add, restart, or yes)")
+            print(f"are you happy with the text: \n {self.toBePrintedText} (say add, restart or done)")
+            self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say add, restart, or done)")
 
             self.currentStep = 2
-        if (self.currentStep == 2):
+        elif (self.currentStep == 2):
             if "add" in words:
                 self.currentStep = 1
-                print("Back to step 1")
-                self.SpeakText("Back to step 1")
+                print("Back to step 1, addition on")
+                self.SpeakText("Back to step 1, addition on")
                 self.addSetting = True
                 return False
             elif "restart" in words:
                 self.currentStep = 1
-                print("Back to step 1")
-                self.SpeakText("Back to step 1")
+                print("Back to step 1, restarting")
+                self.SpeakText("Back to step 1, restarting")
                 self.addSetting = False
                 return False
-            elif "yes" in words:
+            elif "done" in words:
                 f = open(file, "a")
                 f.write(f"print('{self.toBePrintedText}') \n")
                 f.close()
