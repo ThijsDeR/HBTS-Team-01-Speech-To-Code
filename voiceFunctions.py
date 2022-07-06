@@ -1,16 +1,17 @@
 import pyttsx3
 
 class voiceFunctions:
-    stepAmountMax = 1
-    currentStep = 1
+    stepAmountMax = None
+    currentStep = 0
+    inlineVoiceFunction = None
+    spacing = None
     
-    def __init__(self, stepAmount):
+    def __init__(self, stepAmount, spacing):
         self.stepAmountMax = stepAmount
+        self.spacing = spacing
 
     def SpeakText(self, command):
-  
         # Initialize the engine
         engine = pyttsx3.init()
         engine.say(command)
         engine.runAndWait()
-    

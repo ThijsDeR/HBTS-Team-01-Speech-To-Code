@@ -6,6 +6,7 @@ import importlib
 import speech_recognition as sr
 import pyttsx3
 import os
+from functions.baseFunction import BaseFunction
 import text
 import functions.print as printFunction
 import functions.ifFunction as ifFunction
@@ -18,9 +19,10 @@ os.remove('text.py')
 f = open("text.py", "w")
 f.write("def voiceCommand():\n print('') \n")
 f.close()
-print('ready')
-voiceFunction = None
+print('ready:')
+voiceFunction = BaseFunction(2)
 
+voiceFunction.advance("", "text.py")
 # Function to convert text to
 # speech
 def SpeakText(command):
@@ -57,42 +59,6 @@ while(1):
       print(f"heard: {MyText}")
       if voiceFunction != None:
         done = voiceFunction.advance(MyText, "text.py")
-        if done:
-          voiceFunction = None
-      else:
-        if "make" in MyText:
-          if "print" in MyText:
-            voiceFunction = printFunction.printFunctionality()
-            print(voiceFunction.getFunctionalityString())
-            SpeakText(voiceFunction.getFunctionalityString())
-
-          if "data" in MyText:
-            voiceFunction = dataFunction.dataFunctionality()
-            print(voiceFunction.getFunctionalityString())
-            SpeakText(voiceFunction.getFunctionalityString())
-
-        elif "while" in MyText:
-            voiceFunction = whileFunction.whileFunctionality()
-            print(voiceFunction.getFunctionalityString())
-            SpeakText(voiceFunction.getFunctionalityString())
-
-        elif "execute" in MyText:
-          importlib.reload(text)
-          text.voiceCommand()
-        elif "reset" in MyText:
-          os.remove('text.py')
-          f = open("text.py", "w")
-          f.write("def voiceCommand():\n print('') \n")
-          f.close()
-          print("Resetted all code")
-          SpeakText("Resetted all code")
-        elif "help" in MyText:
-          print("Available functions: \n - make (print)\n - execute\n - reset\n - help")
-          SpeakText("Available functions: \n - make (print)\n - execute\n - reset\n - help")
-        else:
-          print(f"Nothing found for {MyText}")
-          SpeakText(f"Nothing found for {MyText}")
-  
   except sr.RequestError as e:
     print(f"Nothing found, try help")
     SpeakText(f"Nothing found, try help")
