@@ -17,7 +17,7 @@ import functions.datatypes as dataFunction
 r = sr.Recognizer()
 os.remove('text.py')
 f = open("text.py", "w")
-f.write("def voiceCommand():\n print('') \n")
+f.write("def voiceCommand():\n  print('') \n")
 f.close()
 print('ready:')
 voiceFunction = BaseFunction(2)

@@ -6,6 +6,7 @@ class printFunctionality(voiceFunctions):
     printedText = ""
     def __init__(self, spacing):
         super().__init__(2, spacing)
+        print(spacing)
 
     def advance(self, words, file):
         if "exit" in words:

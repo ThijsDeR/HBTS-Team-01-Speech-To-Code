@@ -1,6 +1,7 @@
 import importlib
 import os
 from functions.datatypes import dataFunctionality
+from functions.ifFunction import ifFunctionality
 from functions.print import printFunctionality
 from functions.whileFunction import whileFunctionality
 from voiceFunctions import voiceFunctions
@@ -10,6 +11,7 @@ import text
 class BaseFunction(voiceFunctions):
     def __init__(self, spacing):
         super().__init__(1, spacing)
+        self.currentStep = 0
     def advance(self, words, file):
         if self.inlineVoiceFunction == None:
             if "done" in words:
@@ -21,14 +23,15 @@ class BaseFunction(voiceFunctions):
             elif self.currentStep == 1:
                 if "make" in words:
                     if "print" in words:
-                        self.inlineVoiceFunction = printFunctionality(self.spacing + 2)
+                        self.inlineVoiceFunction = printFunctionality(self.spacing)
                         print(self.inlineVoiceFunction == None)
-                    if "data" in words:
-                        self.inlineVoiceFunction = dataFunctionality(self.spacing + 2)
+                    elif "data" in words:
+                        self.inlineVoiceFunction = dataFunctionality(self.spacing)
                     elif "while" in words:
-                        self.inlineVoiceFunction = whileFunctionality(self.spacing + 2)
-                    elif "for" in words:
-                        self.inlineVoiceFunction = whileFunctionality(self.spacing + 2)
+                        self.inlineVoiceFunction = whileFunctionality(self.spacing)
+                    elif "if statement" in words: 
+                        self.inlineVoiceFunction = ifFunctionality(self.spacing)
+                    
                 elif "execute" in words:
                     importlib.reload(text)
                     text.voiceCommand()
@@ -49,5 +52,6 @@ class BaseFunction(voiceFunctions):
             done = self.inlineVoiceFunction.advance(words, file)
             if done:
                 self.inlineVoiceFunction = None
+                self.currentStep = 0
     def getFunctionalityString(self):
         return "Use the help function to hear more about the options"
