@@ -38,7 +38,7 @@ class forFunctionality(voiceFunctions):
      
         if (self.currentstep == 3): 
           print("printing")   
-        f.write(f"\n  'for x in {splitNumber} or {function}: print('x')'; \n")
+        f.write(f"\n  'for x in {splitNumber} or '{function}': print('x')'; \n")
         f.close()
         print(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
         self.SpeakText(f"are you happy with the text: \n {self.toBePrintedText} (say yes or no)")
